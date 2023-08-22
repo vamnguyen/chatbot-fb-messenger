@@ -1,9 +1,10 @@
-require("dotenv").config();
+// require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 import bodyParser from "body-parser";
 import express from "express";
-import viewEngine from "./configs/viewEngine";
-import initWebRoutes from "./routes/web";
-import bodyParser from "body-parser";
+import viewEngine from "./configs/viewEngine.js";
+import initWebRoutes from "./routes/web.js";
 
 // Init app
 let app = express();

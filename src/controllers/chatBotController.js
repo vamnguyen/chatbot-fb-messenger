@@ -1,4 +1,6 @@
-require("dotenv").config();
+// require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -56,4 +58,4 @@ let getWebhook = (req, res) => {
   }
 };
 
-module.exports = { postWebhook, getWebhook };
+export default { postWebhook, getWebhook };
