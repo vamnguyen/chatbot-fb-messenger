@@ -2,6 +2,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import request from "request";
+import chatBotService from "../services/chatBotService.js";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
@@ -124,7 +125,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       response = { text: "Oops, try sending another image." };
       break;
     case "GET_STARTED":
-      response = { text: "Welcome you to VAM Nguyen Restaurant!" };
+      await chatBotService.handleGetStarted(sender_psid);
       break;
 
     default:
