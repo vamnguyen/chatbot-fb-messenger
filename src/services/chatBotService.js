@@ -45,7 +45,7 @@ let getUserName = async (sender_psid) => {
         console.log("getUserName ~ body:", body);
         if (!err) {
           body = JSON.parse(body);
-          username = `${body.first_name} ${body.last_name}`;
+          const username = `${body.first_name} ${body.last_name}`;
           resolve(username);
         } else {
           console.error("Unable to send message:" + err);
