@@ -56,12 +56,55 @@ let getUserName = async (sender_psid) => {
   });
 };
 
+let sendGetStartedTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Welcome!",
+            image_url:
+              "https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
+            subtitle: "We have the right hat for everyone.",
+            default_action: {
+              type: "web_url",
+              url: "https://www.originalcoastclothing.com/",
+              webview_height_ratio: "tall",
+            },
+            buttons: [
+              {
+                type: "web_url",
+                url: "https://www.originalcoastclothing.com/",
+                title: "View Website",
+              },
+              {
+                type: "postback",
+                title: "Start Chatting",
+                payload: "DEVELOPER_DEFINED_PAYLOAD",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
 let handleGetStarted = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       const username = await getUserName(sender_psid);
-      let response = { text: `Welcome ${username} to VAM Nguyen Restaurant!` };
-      await callSendAPI(sender_psid, response);
+      // send text message
+      let response1 = { text: `Welcome ${username} to VAM Nguyen Restaurant!` };
+      await callSendAPI(sender_psid, response1);
+
+      // send generic template message
+      let response2 = sendGetStartedTemplate();
+      await callSendAPI(sender_psid, response2);
+
       resolve("done");
     } catch (error) {
       reject(error);
