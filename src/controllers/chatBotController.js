@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import request from "request";
 
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
@@ -151,4 +153,35 @@ function callSendAPI(sender_psid, response) {
   );
 }
 
-export default { postWebhook, getWebhook };
+let setupProfile = async (req, res) => {
+  // call profile facebook api
+  // Construct the message body
+  let request_body = {
+    get_started: {
+      payload: "GET_STARTED",
+    },
+    whitelisted_domains: ["https://chatbot-fb-messenger-io7a.onrender.com/"],
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  await request(
+    {
+      uri: `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      console.log("body:", body);
+      if (!err) {
+        console.log("Set up user profile successfully!");
+      } else {
+        console.error("Unable to set up user profile:" + err);
+      }
+    }
+  );
+
+  return res.send("Set up user profile successfully!");
+};
+
+export default { postWebhook, getWebhook, setupProfile };
