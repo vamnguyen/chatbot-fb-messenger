@@ -197,4 +197,55 @@ let setupProfile = async (req, res) => {
   return res.send("Set up user profile successfully!");
 };
 
-export default { postWebhook, getWebhook, setupProfile };
+let setupPersistentMenu = async (req, res) => {
+  // Construct the message body
+  let request_body = {
+    persistent_menu: [
+      {
+        locale: "default",
+        composer_input_disabled: false,
+        call_to_actions: [
+          {
+            type: "web_url",
+            title: "View Youtube Channel",
+            url: "https://www.youtube.com/@VAM.Nguyen",
+            webview_height_ratio: "full",
+          },
+          {
+            type: "web_url",
+            title: "View Facebook Fan Page",
+            url: "https://facebook.com/vamnguyenpage",
+            webview_height_ratio: "full",
+          },
+          {
+            type: "postback",
+            title: "Restart this conversation",
+            payload: "RESTART_CONVERSATION",
+          },
+        ],
+      },
+    ],
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  await request(
+    {
+      uri: `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      console.log("body:", body);
+      if (!err) {
+        console.log("Set up persistent menu successfully!");
+      } else {
+        console.error("Unable to set up persistent menu:" + err);
+      }
+    }
+  );
+
+  return res.send("Set up persistent menu successfully!");
+};
+
+export default { postWebhook, getWebhook, setupProfile, setupPersistentMenu };

@@ -75,18 +75,18 @@ let sendGetStartedTemplate = () => {
               // },
               {
                 type: "postback",
-                title: "MAIN MENU",
+                title: "SHOW MAIN MENU",
                 payload: "MAIN_MENU",
               },
               {
                 type: "postback",
-                title: "BOOK TABLE",
-                payload: "DEVELOPER_DEFINED_PAYLOAD",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
               },
               {
                 type: "postback",
-                title: "BOT USER MANUAL",
-                payload: "DEVELOPER_DEFINED_PAYLOAD",
+                title: "GUIDE TO USE THIS BOT",
+                payload: "GUIDE_BOT",
               },
             ],
           },
