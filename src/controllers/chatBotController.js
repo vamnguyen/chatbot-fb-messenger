@@ -124,6 +124,7 @@ let handlePostback = async (sender_psid, received_postback) => {
     case "no":
       response = { text: "Oops, try sending another image." };
       break;
+    case "RESTART_CONVERSATION":
     case "GET_STARTED":
       await chatBotService.handleGetStarted(sender_psid);
       break;
