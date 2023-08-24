@@ -1,9 +1,9 @@
 import request from "request";
 import dotenv from "dotenv";
-import { response } from "express";
 dotenv.config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const IMAGE_GET_STARTED = "https://bit.ly/vam-bot1";
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
@@ -64,24 +64,28 @@ let sendGetStartedTemplate = () => {
         template_type: "generic",
         elements: [
           {
-            title: "Welcome!",
-            image_url:
-              "https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
+            title: "The VAM restaurant warmly welcomes our valued guests!",
+            image_url: IMAGE_GET_STARTED,
             subtitle: "We have the right hat for everyone.",
-            default_action: {
-              type: "web_url",
-              url: "https://www.originalcoastclothing.com/",
-              webview_height_ratio: "tall",
-            },
             buttons: [
+              // {
+              //   type: "web_url",
+              //   url: "https://www.originalcoastclothing.com/",
+              //   title: "View Website",
+              // },
               {
-                type: "web_url",
-                url: "https://www.originalcoastclothing.com/",
-                title: "View Website",
+                type: "postback",
+                title: "MAIN MENU",
+                payload: "MAIN_MENU",
               },
               {
                 type: "postback",
-                title: "Start Chatting",
+                title: "BOOK TABLE",
+                payload: "DEVELOPER_DEFINED_PAYLOAD",
+              },
+              {
+                type: "postback",
+                title: "BOT USER MANUAL",
                 payload: "DEVELOPER_DEFINED_PAYLOAD",
               },
             ],
