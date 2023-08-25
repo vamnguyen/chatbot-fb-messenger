@@ -121,17 +121,23 @@ let handlePostback = async (sender_psid, received_postback) => {
     case "yes":
       response = { text: "Thanks!" };
       break;
+
     case "no":
       response = { text: "Oops, try sending another image." };
       break;
+
     case "RESTART_CONVERSATION":
     case "GET_STARTED":
       await chatBotService.handleGetStarted(sender_psid);
       break;
 
+    case "MAIN_MENU":
+      await chatBotService.handleSendMainMenu(sender_psid);
+      break;
+
     default:
       response = {
-        text: `Oops! I don't know request with postback ${payload}`,
+        text: `Oops! Sorry, I don't know request with postback ${payload}`,
       };
   }
 

@@ -56,7 +56,7 @@ let getUserName = async (sender_psid) => {
   });
 };
 
-let sendGetStartedTemplate = () => {
+let getStartedTemplate = () => {
   let response = {
     attachment: {
       type: "template",
@@ -68,11 +68,6 @@ let sendGetStartedTemplate = () => {
             image_url: IMAGE_GET_STARTED,
             subtitle: "We have the right hat for everyone.",
             buttons: [
-              // {
-              //   type: "web_url",
-              //   url: "https://www.originalcoastclothing.com/",
-              //   title: "View Website",
-              // },
               {
                 type: "postback",
                 title: "SHOW MAIN MENU",
@@ -86,7 +81,7 @@ let sendGetStartedTemplate = () => {
               {
                 type: "postback",
                 title: "GUIDE TO USE THIS BOT",
-                payload: "GUIDE_BOT",
+                payload: "GUIDE_TO_USE",
               },
             ],
           },
@@ -106,7 +101,7 @@ let handleGetStarted = (sender_psid) => {
       await callSendAPI(sender_psid, response1);
 
       // send generic template message
-      let response2 = sendGetStartedTemplate();
+      let response2 = getStartedTemplate();
       await callSendAPI(sender_psid, response2);
 
       resolve("done");
@@ -116,4 +111,75 @@ let handleGetStarted = (sender_psid) => {
   });
 };
 
-export default { handleGetStarted };
+let getMainMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Our menus",
+            subtitle:
+              "We are pleased to offer you a wide-range of menu for lunch or dinner.",
+            image_url: "https://bit.ly/imageMenu",
+            buttons: [
+              {
+                type: "postback",
+                title: "LUNCH MENU",
+                payload: "LUNCH_MENU",
+              },
+              {
+                type: "postback",
+                title: "DINNER MENU",
+                payload: "DINNER_MENU",
+              },
+            ],
+          },
+          {
+            title: "Business Hours",
+            subtitle: "MON-FRI 10AM - 11PM  | SAT 5PM - 10PM | SUN 5PM - 9PM",
+            image_url: IMAGE_GET_STARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+          {
+            title: "Restaurant Space",
+            subtitle:
+              "Restaurant accommodates up to 300 seated guests and similar at cocktail receptions",
+            image_url: IMAGE_GET_STARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW ROOMS",
+                payload: "SHOW_ROOMS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
+let handleSendMainMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getMainMenuTemplate();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export default { handleGetStarted, handleSendMainMenu };
