@@ -6,7 +6,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const IMAGE_GET_STARTED = "https://bit.ly/vam-bot1";
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+async function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
     recipient: {
@@ -14,6 +14,9 @@ function callSendAPI(sender_psid, response) {
     },
     message: response,
   };
+
+  await sendMarkSeenMessage(sender_psid);
+  await sendTypingOn(sender_psid);
 
   // Send the HTTP request to the Messenger Platform
   request(
@@ -32,6 +35,59 @@ function callSendAPI(sender_psid, response) {
     }
   );
 }
+
+let sendTypingOn = (sender_psid) => {
+  // Construct the message body
+  let request_body = {
+    recipient: {
+      id: sender_psid,
+    },
+    sender_action: "typing_on",
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  request(
+    {
+      uri: "https://graph.facebook.com/v2.6/me/messages",
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      if (!err) {
+        console.log("sendTypingOn sent!");
+      } else {
+        console.error("Unable to send sendTypingOn:" + err);
+      }
+    }
+  );
+};
+let sendMarkSeenMessage = (sender_psid) => {
+  // Construct the message body
+  let request_body = {
+    recipient: {
+      id: sender_psid,
+    },
+    sender_action: "mark_seen",
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  request(
+    {
+      uri: "https://graph.facebook.com/v2.6/me/messages",
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      if (!err) {
+        console.log("sendMarkSeenMessage sent!");
+      } else {
+        console.error("Unable to send sendMarkSeenMessage:" + err);
+      }
+    }
+  );
+};
 
 let getUserName = async (sender_psid) => {
   return new Promise((resolve, reject) => {
