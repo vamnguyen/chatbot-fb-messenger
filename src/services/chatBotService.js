@@ -213,7 +213,7 @@ let getLunchMenuTemplate = () => {
           },
           {
             title: "Meat Bacon",
-            image_url: "https://bit.ly/imageSalad",
+            image_url: "https://bit.ly/3qKHFxk",
             buttons: [
               {
                 type: "postback",
@@ -424,7 +424,7 @@ let getMeatDetail = () => {
   };
   return response;
 };
-let sendMeatBacon = () => {
+let sendMeatBacon = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
