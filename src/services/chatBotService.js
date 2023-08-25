@@ -238,6 +238,7 @@ let sendMainMenu = (sender_psid) => {
   });
 };
 
+// Lunch and Dinner
 let getLunchMenuTemplate = () => {
   let response = {
     attachment: {
@@ -316,7 +317,85 @@ let sendLunchMenu = (sender_psid) => {
   });
 };
 
-// Lunch Detail
+let getDinnerMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Appetizers",
+            image_url: "https://bit.ly/imageAppetizer",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW APPETIZERS",
+                payload: "SHOW_APPETIZERS",
+              },
+            ],
+          },
+          {
+            title: "Fish and Shell Fish",
+            image_url: "https://bit.ly/imageFish",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW FISH",
+                payload: "SHOW_FISH",
+              },
+            ],
+          },
+          {
+            title: "Meat Bacon",
+            image_url: "https://bit.ly/3qKHFxk",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW MEAT BACON",
+                payload: "SHOW_MEAT_BACON",
+              },
+            ],
+          },
+
+          {
+            title: "Go back",
+            image_url: " https://bit.ly/imageToSend",
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENU",
+                payload: "BACK_TO_MAIN_MENU",
+              },
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
+let sendDinnerMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getDinnerMenuTemplate();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+// Lunch, Dinner Detail
 let getAppetizerDetail = () => {
   let response = {
     attachment: {
@@ -485,23 +564,6 @@ let sendMeatBacon = (sender_psid) => {
     try {
       // send generic template message
       let response = getMeatDetail();
-      await callSendAPI(sender_psid, response);
-
-      resolve("done");
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-
-// Dinner Detail
-let getDinnerMenuTemplate = () => {};
-
-let sendDinnerMenu = (sender_psid) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      // send generic template message
-      let response = getDinnerMenuTemplate();
       await callSendAPI(sender_psid, response);
 
       resolve("done");
