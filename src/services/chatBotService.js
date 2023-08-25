@@ -196,7 +196,7 @@ let getLunchMenuTemplate = () => {
               {
                 type: "postback",
                 title: "SHOW APPETIZERS",
-                payload: "SHOW_APPETIZERS_DETAIL",
+                payload: "SHOW_APPETIZERS",
               },
             ],
           },
@@ -208,7 +208,7 @@ let getLunchMenuTemplate = () => {
               {
                 type: "postback",
                 title: "SHOW ENTREE SALAD",
-                payload: "SHOW_ENTREE_SALAD_DETAIL",
+                payload: "SHOW_ENTREE_SALAD",
               },
             ],
           },
@@ -220,7 +220,7 @@ let getLunchMenuTemplate = () => {
               {
                 type: "postback",
                 title: "SHOW FISH",
-                payload: "SHOW_FISH_DETAIL",
+                payload: "SHOW_FISH",
               },
             ],
           },
@@ -233,7 +233,7 @@ let getLunchMenuTemplate = () => {
               {
                 type: "postback",
                 title: "SHOW CLASSICS",
-                payload: "SHOW_CLASSICS_DETAIL",
+                payload: "SHOW_CLASSICS",
               },
             ],
           },
@@ -368,9 +368,14 @@ let sendDinnerMenu = (sender_psid) => {
   });
 };
 
+let backToMainMenu = async (sender_psid) => {
+  await sendMainMenu(sender_psid);
+};
+
 export default {
   handleGetStarted,
   sendMainMenu,
   sendLunchMenu,
   sendDinnerMenu,
+  backToMainMenu,
 };
