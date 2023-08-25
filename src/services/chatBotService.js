@@ -200,19 +200,6 @@ let getLunchMenuTemplate = () => {
               },
             ],
           },
-
-          {
-            title: "Entree Salad",
-            image_url: "https://bit.ly/imageSalad",
-            buttons: [
-              {
-                type: "postback",
-                title: "SHOW ENTREE SALAD",
-                payload: "SHOW_ENTREE_SALAD",
-              },
-            ],
-          },
-
           {
             title: "Fish and Shell Fish",
             image_url: "https://bit.ly/imageFish",
@@ -224,16 +211,14 @@ let getLunchMenuTemplate = () => {
               },
             ],
           },
-
           {
-            title: "Skeens Classics",
-            subtitle: "and Dry-aged on Premise",
-            image_url: "https://bit.ly/imageClassics",
+            title: "Meat Bacon",
+            image_url: "https://bit.ly/imageSalad",
             buttons: [
               {
                 type: "postback",
-                title: "SHOW CLASSICS",
-                payload: "SHOW_CLASSICS",
+                title: "SHOW MEAT BACON",
+                payload: "SHOW_MEAT_BACON",
               },
             ],
           },
@@ -275,7 +260,8 @@ let sendLunchMenu = (sender_psid) => {
   });
 };
 
-let getDinnerMenuTemplate = () => {
+// Lunch Detail
+let getAppetizerDetail = () => {
   let response = {
     attachment: {
       type: "template",
@@ -283,52 +269,19 @@ let getDinnerMenuTemplate = () => {
         template_type: "generic",
         elements: [
           {
-            title: "Appetizers",
-            image_url: "https://bit.ly/imageAppetizer",
-            buttons: [
-              {
-                type: "postback",
-                title: "SHOW APPETIZERS",
-                payload: "SHOW_APPETIZERS",
-              },
-            ],
+            title: "Watermelon",
+            subtitle: "50.000vnd/1kg",
+            image_url: "https://bit.ly/vam-watermelon",
           },
-
           {
-            title: "Entree Salad",
-            image_url: "https://bit.ly/imageSalad",
-            buttons: [
-              {
-                type: "postback",
-                title: "SHOW ENTREE SALAD",
-                payload: "SHOW_ENTREE_SALAD",
-              },
-            ],
+            title: "Mango",
+            subtitle: "20.000vnd/1kg",
+            image_url: "https://bit.ly/vam-mango",
           },
-
           {
-            title: "Fish and Shell Fish",
-            image_url: "https://bit.ly/imageFish",
-            buttons: [
-              {
-                type: "postback",
-                title: "SHOW FISH",
-                payload: "SHOW_FISH",
-              },
-            ],
-          },
-
-          {
-            title: "Skeens Classics",
-            subtitle: "and Dry-aged on Premise",
-            image_url: "https://bit.ly/imageClassics",
-            buttons: [
-              {
-                type: "postback",
-                title: "SHOW CLASSICS",
-                payload: "SHOW_CLASSICS",
-              },
-            ],
+            title: "Guava",
+            subtitle: "30.000vnd/1kg",
+            image_url: "https://bit.ly/vam-guava",
           },
 
           {
@@ -353,6 +306,140 @@ let getDinnerMenuTemplate = () => {
   };
   return response;
 };
+let sendAppetizer = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getAppetizerDetail();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let getFishDetail = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Cá Hồi Châu Âu",
+            subtitle: "150.000vnd/1kg",
+            image_url: "https://bit.ly/vam-ca-hoi",
+          },
+          {
+            title: "Cá Chép Ông Táo",
+            subtitle: "200.000vnd/1kg",
+            image_url: "https://bit.ly/45oF6Ae",
+          },
+          {
+            title: "Cá Ngừ Châu Mỹ",
+            subtitle: "30.000vnd/1kg",
+            image_url: "https://bit.ly/45LRn1t",
+          },
+
+          {
+            title: "Go back",
+            image_url: " https://bit.ly/imageToSend",
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENU",
+                payload: "BACK_TO_MAIN_MENU",
+              },
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+let sendFish = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getFishDetail();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let getMeatDetail = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Thịt nướng phê lòi",
+            subtitle: "150.000vnd/1kg",
+            image_url: "https://bit.ly/3PcBf3s",
+          },
+          {
+            title: "Thịt nướng xông khói ảo giác",
+            subtitle: "200.000vnd/1kg",
+            image_url: "https://bit.ly/3QSUZu8",
+          },
+          {
+            title: "Thịt xông khói Mai Thúy",
+            subtitle: "30.000vnd/1kg",
+            image_url: "https://bit.ly/3srGzqS",
+          },
+
+          {
+            title: "Go back",
+            image_url: " https://bit.ly/imageToSend",
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENU",
+                payload: "BACK_TO_MAIN_MENU",
+              },
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+let sendMeatBacon = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getMeatDetail();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+// Dinner Detail
+let getDinnerMenuTemplate = () => {};
 
 let sendDinnerMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -378,4 +465,7 @@ export default {
   sendLunchMenu,
   sendDinnerMenu,
   backToMainMenu,
+  sendAppetizer,
+  sendFish,
+  sendMeatBacon,
 };
