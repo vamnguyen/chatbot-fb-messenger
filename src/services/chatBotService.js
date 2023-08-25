@@ -168,7 +168,7 @@ let getMainMenuTemplate = () => {
   return response;
 };
 
-let handleSendMainMenu = (sender_psid) => {
+let sendMainMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
@@ -182,4 +182,195 @@ let handleSendMainMenu = (sender_psid) => {
   });
 };
 
-export default { handleGetStarted, handleSendMainMenu };
+let getLunchMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Appetizers",
+            image_url: "https://bit.ly/imageAppetizer",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW APPETIZERS",
+                payload: "SHOW_APPETIZERS_DETAIL",
+              },
+            ],
+          },
+
+          {
+            title: "Entree Salad",
+            image_url: "https://bit.ly/imageSalad",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW ENTREE SALAD",
+                payload: "SHOW_ENTREE_SALAD_DETAIL",
+              },
+            ],
+          },
+
+          {
+            title: "Fish and Shell Fish",
+            image_url: "https://bit.ly/imageFish",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW FISH",
+                payload: "SHOW_FISH_DETAIL",
+              },
+            ],
+          },
+
+          {
+            title: "Skeens Classics",
+            subtitle: "and Dry-aged on Premise",
+            image_url: "https://bit.ly/imageClassics",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW CLASSICS",
+                payload: "SHOW_CLASSICS_DETAIL",
+              },
+            ],
+          },
+
+          {
+            title: "Go back",
+            image_url: " https://bit.ly/imageToSend",
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENU",
+                payload: "BACK_TO_MAIN_MENU",
+              },
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
+let sendLunchMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getLunchMenuTemplate();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let getDinnerMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Appetizers",
+            image_url: "https://bit.ly/imageAppetizer",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW APPETIZERS",
+                payload: "SHOW_APPETIZERS",
+              },
+            ],
+          },
+
+          {
+            title: "Entree Salad",
+            image_url: "https://bit.ly/imageSalad",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW ENTREE SALAD",
+                payload: "SHOW_ENTREE_SALAD",
+              },
+            ],
+          },
+
+          {
+            title: "Fish and Shell Fish",
+            image_url: "https://bit.ly/imageFish",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW FISH",
+                payload: "SHOW_FISH",
+              },
+            ],
+          },
+
+          {
+            title: "Skeens Classics",
+            subtitle: "and Dry-aged on Premise",
+            image_url: "https://bit.ly/imageClassics",
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW CLASSICS",
+                payload: "SHOW_CLASSICS",
+              },
+            ],
+          },
+
+          {
+            title: "Go back",
+            image_url: " https://bit.ly/imageToSend",
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENU",
+                payload: "BACK_TO_MAIN_MENU",
+              },
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_TABLE",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
+let sendDinnerMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send generic template message
+      let response = getDinnerMenuTemplate();
+      await callSendAPI(sender_psid, response);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export default {
+  handleGetStarted,
+  sendMainMenu,
+  sendLunchMenu,
+  sendDinnerMenu,
+};
