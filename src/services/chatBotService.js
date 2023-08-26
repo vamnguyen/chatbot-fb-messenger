@@ -135,7 +135,7 @@ let getStartedTemplate = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
               {
                 type: "postback",
@@ -205,7 +205,7 @@ let getMainMenuTemplate = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
@@ -299,7 +299,7 @@ let getLunchMenuTemplate = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
@@ -379,7 +379,7 @@ let getDinnerMenuTemplate = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
@@ -442,7 +442,7 @@ let getAppetizerDetail = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
@@ -503,7 +503,7 @@ let getFishDetail = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
@@ -564,7 +564,7 @@ let getMeatDetail = () => {
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
-                messenger_extensions: true, // false: open the webview in new tab
+                messenger_extensions: false, // false: open the webview in new tab
               },
             ],
           },
