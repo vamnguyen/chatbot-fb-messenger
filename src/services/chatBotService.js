@@ -583,7 +583,7 @@ let getImageRoomTemplate = () => {
     attachment: {
       type: "image",
       payload: {
-        uri: IMAGE_DETAIL_ROOM,
+        url: IMAGE_DETAIL_ROOM,
         is_reusable: true,
       },
     },
