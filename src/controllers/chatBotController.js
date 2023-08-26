@@ -280,8 +280,37 @@ let setupPersistentMenu = async (req, res) => {
   return res.send("Set up persistent menu successfully!");
 };
 
-let handleTableReservation = async (req, res) => {
+let handleTableReservation = (req, res) => {
   return res.render("tableReservation.ejs");
+};
+
+let handlePostReserveTable = async (req, res) => {
+  try {
+    let customerName = "";
+    if (req.body.customerName === "") {
+      customerName = "Empty";
+    } else customerName = req.body.customerName;
+
+    // I demo response with sample text
+    // you can check database for customer order's status
+
+    let response = {
+      text: `---Info customer table reservation---
+        \nCustomer name: ${customerName}
+        \nEmail address: ${req.body.email}
+        \nPhone number: ${req.body.phoneNumber}
+        `,
+    };
+
+    await chatBotService.callSendAPI(req.body.psid, response);
+
+    return res.status(200).json({
+      message: "ok",
+    });
+  } catch (e) {
+    console.log("Error table reservation:", e);
+    return res.status(500).json({ message: "Server Error" });
+  }
 };
 
 export default {
@@ -290,4 +319,5 @@ export default {
   setupProfile,
   setupPersistentMenu,
   handleTableReservation,
+  handlePostReserveTable,
 };

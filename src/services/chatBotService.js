@@ -658,4 +658,5 @@ export default {
   sendFish,
   sendMeatBacon,
   handleShowDetailRoom,
+  callSendAPI,
 };
