@@ -4,6 +4,7 @@ dotenv.config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const IMAGE_GET_STARTED = "https://bit.ly/vam-bot1";
+const IMAGE_DETAIL_ROOM = "https://bit.ly/eric-bot-18";
 
 // Sends response messages via the Send API
 async function callSendAPI(sender_psid, response) {
@@ -577,6 +578,62 @@ let backToMainMenu = async (sender_psid) => {
   await sendMainMenu(sender_psid);
 };
 
+let getImageRoomTemplate = () => {
+  let response = {
+    attachment: {
+      type: "image",
+      payload: {
+        uri: IMAGE_DETAIL_ROOM,
+        is_reusable: true,
+      },
+    },
+  };
+  return response;
+};
+
+let getButtonRoomTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "button",
+        text: "The Restaurant can contain a maximum of 300 customer.",
+        buttons: [
+          {
+            type: "postback",
+            title: "GO BACK MAIN MENU",
+            payload: "BACK_TO_MAIN_MENU",
+          },
+          {
+            type: "postback",
+            title: "RESERVE A TABLE",
+            payload: "RESERVE_TABLE",
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
+
+let handleShowDetailRoom = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send an image
+      let response1 = getImageRoomTemplate();
+      // send a button template: text, buttons
+      let response2 = getButtonRoomTemplate();
+
+      await callSendAPI(sender_psid, response1);
+      await callSendAPI(sender_psid, response2);
+
+      resolve("done");
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
 export default {
   handleGetStarted,
   sendMainMenu,
@@ -586,4 +643,5 @@ export default {
   sendAppetizer,
   sendFish,
   sendMeatBacon,
+  handleShowDetailRoom,
 };
