@@ -287,7 +287,7 @@ let getLunchMenuTemplate = () => {
             buttons: [
               {
                 type: "postback",
-                title: "BACK TO MAIN MENU",
+                title: "MAIN MENU",
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
@@ -365,7 +365,7 @@ let getDinnerMenuTemplate = () => {
             buttons: [
               {
                 type: "postback",
-                title: "BACK TO MAIN MENU",
+                title: "MAIN MENU",
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
@@ -426,7 +426,7 @@ let getAppetizerDetail = () => {
             buttons: [
               {
                 type: "postback",
-                title: "BACK TO MAIN MENU",
+                title: "MAIN MENU",
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
@@ -485,7 +485,7 @@ let getFishDetail = () => {
             buttons: [
               {
                 type: "postback",
-                title: "BACK TO MAIN MENU",
+                title: "MAIN MENU",
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
@@ -544,7 +544,7 @@ let getMeatDetail = () => {
             buttons: [
               {
                 type: "postback",
-                title: "BACK TO MAIN MENU",
+                title: "MAIN MENU",
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
@@ -601,7 +601,7 @@ let getButtonRoomTemplate = () => {
         buttons: [
           {
             type: "postback",
-            title: "GO BACK MAIN MENU",
+            title: "MAIN MENU",
             payload: "BACK_TO_MAIN_MENU",
           },
           {
