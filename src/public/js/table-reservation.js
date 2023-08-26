@@ -30,6 +30,7 @@ window.extAsyncInit = function () {
 
 //validate inputs
 function validateInputFields() {
+  console.log("validate is running...");
   const EMAIL_REG =
     /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
 
@@ -37,16 +38,20 @@ function validateInputFields() {
   let phoneNumber = $("#phoneNumber");
 
   if (!email.val().match(EMAIL_REG)) {
+    console.log("validating email...");
     email.addClass("is-invalid");
     return true;
   } else {
+    console.log("validate email successfully");
     email.removeClass("is-invalid");
   }
 
   if (phoneNumber.val() === "") {
+    console.log("validating phoneNumber...");
     phoneNumber.addClass("is-invalid");
     return true;
   } else {
+    console.log("validate phoneNumber successfully");
     phoneNumber.removeClass("is-invalid");
   }
 
@@ -55,7 +60,10 @@ function validateInputFields() {
 
 function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
+    console.log("check before validate");
     let check = validateInputFields(); //return true or false
+    console.log("check after validate");
+    console.log("🚀 ~ file: table-reservation.js:66 ~ check:", check);
 
     let data = {
       psid: $("#psid").val(),
