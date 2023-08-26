@@ -280,4 +280,14 @@ let setupPersistentMenu = async (req, res) => {
   return res.send("Set up persistent menu successfully!");
 };
 
-export default { postWebhook, getWebhook, setupProfile, setupPersistentMenu };
+let handleTableReservation = async (req, res) => {
+  return res.render("tableReservation.ejs");
+};
+
+export default {
+  postWebhook,
+  getWebhook,
+  setupProfile,
+  setupPersistentMenu,
+  handleTableReservation,
+};

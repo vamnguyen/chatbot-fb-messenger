@@ -131,9 +131,11 @@ let getStartedTemplate = () => {
                 payload: "MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
               {
                 type: "postback",
@@ -199,9 +201,11 @@ let getMainMenuTemplate = () => {
             image_url: IMAGE_GET_STARTED,
             buttons: [
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
@@ -291,9 +295,11 @@ let getLunchMenuTemplate = () => {
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
@@ -369,9 +375,11 @@ let getDinnerMenuTemplate = () => {
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
@@ -430,9 +438,11 @@ let getAppetizerDetail = () => {
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
@@ -489,9 +499,11 @@ let getFishDetail = () => {
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
@@ -548,9 +560,11 @@ let getMeatDetail = () => {
                 payload: "BACK_TO_MAIN_MENU",
               },
               {
-                type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_TABLE",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                title: "TABLE RESERVATION",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, // false: open the webview in new tab
               },
             ],
           },
