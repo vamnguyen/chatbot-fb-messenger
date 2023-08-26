@@ -302,7 +302,9 @@ let handlePostReserveTable = async (req, res) => {
         `,
     };
 
+    console.log("check chatBotService before running..");
     await chatBotService.callSendAPI(req.body.psid, response);
+    console.log("check chatBotService after running....");
 
     return res.status(200).json({
       message: "ok",
