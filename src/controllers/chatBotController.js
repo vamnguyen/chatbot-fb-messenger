@@ -12,9 +12,12 @@ const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 
 let writeDataToGoogleSheet = async (data) => {
-  let currentDate = new Date();
-  const format = "HH:mm DD/MM/YYYY";
-  let formattedDate = moment(currentDate).format(format);
+  // let currentDate = new Date();
+  // const format = "HH:mm DD/MM/YYYY";
+  // let formattedDate = moment(currentDate).format(format);
+  let formattedDate = new Date().toLocaleString("vi-VN", {
+    timeZone: "Asia/Ho_Chi_Minh",
+  });
 
   // Initialize the sheet - doc ID is the long id in the sheets URL
   const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
