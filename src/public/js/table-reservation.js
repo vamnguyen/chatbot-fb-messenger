@@ -61,7 +61,7 @@ function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
     let check = validateInputFields(); //return true or false
 
-    const data = {
+    let data = {
       psid: $("#psid").val(),
       customerName: $("#customerName").val(),
       email: $("#email").val(),
