@@ -6,7 +6,7 @@
   }
   js = d.createElement(s);
   js.id = id;
-  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+  js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
   fjs.parentNode.insertBefore(js, fjs);
 })(document, "script", "Messenger");
 
@@ -61,7 +61,7 @@ function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
     let check = validateInputFields(); //return true or false
 
-    let data = {
+    const data = {
       psid: $("#psid").val(),
       customerName: $("#customerName").val(),
       email: $("#email").val(),
@@ -73,27 +73,31 @@ function handleClickButtonTableReservation() {
       MessengerExtensions.requestCloseBrowser(
         function success() {
           // webview closed
+          callAjax(data);
         },
         function error(err) {
           // an error occurred
           console.log(err);
+          callAjax(data);
+          $("#customerInfo").css("display", "none");
+          $("#handleError").css("display", "block");
         }
       );
-
-      //send data to node.js server
-      $.ajax({
-        url: `${window.location.origin}/reserve-table-ajax`,
-        method: "POST",
-        data: data,
-        success: function (data) {
-          console.log(data);
-          window.location.reload();
-        },
-        error: function (error) {
-          console.log(error);
-          window.location.reload();
-        },
-      });
     }
+  });
+}
+
+function callAjax(data) {
+  //send data to node.js server
+  $.ajax({
+    url: `${window.location.origin}/reserve-table-ajax`,
+    method: "POST",
+    data: data,
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (error) {
+      console.log(error);
+    },
   });
 }
