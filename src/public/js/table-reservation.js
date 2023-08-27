@@ -87,9 +87,11 @@ function handleClickButtonTableReservation() {
         data: data,
         success: function (data) {
           console.log(data);
+          window.location.reload();
         },
         error: function (error) {
           console.log(error);
+          window.location.reload();
         },
       });
     }
