@@ -27,10 +27,6 @@ window.extAsyncInit = function () {
 
       // run fallback, get userID from URL
       $("#psid").val(senderId);
-      console.log(
-        "🚀 ~ file: table-reservation.js:30 ~ error ~ senderId:",
-        senderId
-      );
       handleClickButtonTableReservation();
     }
   );
@@ -63,7 +59,6 @@ function validateInputFields() {
 
 function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
-    console.log("click button DAT BAN is running...");
     let check = validateInputFields(); //return true or false
 
     let data = {
@@ -82,10 +77,10 @@ function handleClickButtonTableReservation() {
         },
         function error(err) {
           // an error occurred
-          console.log(err);
+          console.log("MessengerExtensions.requestCloseBrowser error:", err);
           callAjax(data);
-          // $("#customerInfo").css("display", "none");
-          // $("#handleError").css("display", "block");
+          $("#customerInfo").css("display", "none");
+          $("#handleError").css("display", "block");
         }
       );
     }
@@ -93,7 +88,6 @@ function handleClickButtonTableReservation() {
 }
 
 function callAjax(data) {
-  console.log("🚀 ~ file: table-reservation.js:96 ~ callAjax: is running...");
   //send data to node.js server
   $.ajax({
     url: `${window.location.origin}/reserve-table-ajax`,

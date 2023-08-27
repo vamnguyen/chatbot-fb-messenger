@@ -5,11 +5,11 @@ body {
   min-height: 100%;
 }
 
-/* .handle-error {
+.handle-error {
   display: none;
   margin: 0 auto;
   padding: 30px 0 25px 10px;
-} */
+}
 
 .container {
   padding-right: 25px;
