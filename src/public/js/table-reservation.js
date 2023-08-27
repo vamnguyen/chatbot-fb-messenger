@@ -93,6 +93,7 @@ function handleClickButtonTableReservation() {
 }
 
 function callAjax(data) {
+  console.log("🚀 ~ file: table-reservation.js:96 ~ callAjax: is running...");
   //send data to node.js server
   $.ajax({
     url: `${window.location.origin}/reserve-table-ajax`,
