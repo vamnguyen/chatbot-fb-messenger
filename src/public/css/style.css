@@ -6,7 +6,7 @@ body {
 }
 
 .handle-error {
-  display: block;
+  display: none;
   margin: 0 auto;
   padding: 30px 0 25px 10px;
 }
