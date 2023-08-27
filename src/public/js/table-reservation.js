@@ -6,7 +6,7 @@
   }
   js = d.createElement(s);
   js.id = id;
-  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+  js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
   fjs.parentNode.insertBefore(js, fjs);
 })(document, "script", "Messenger");
 
@@ -30,7 +30,6 @@ window.extAsyncInit = function () {
 
 //validate inputs
 function validateInputFields() {
-  console.log("validate is running...");
   const EMAIL_REG =
     /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
 
@@ -38,20 +37,16 @@ function validateInputFields() {
   let phoneNumber = $("#phoneNumber");
 
   if (!email.val().match(EMAIL_REG)) {
-    console.log("validating email...");
     email.addClass("is-invalid");
     return true;
   } else {
-    console.log("validate email successfully");
     email.removeClass("is-invalid");
   }
 
   if (phoneNumber.val() === "") {
-    console.log("validating phoneNumber...");
     phoneNumber.addClass("is-invalid");
     return true;
   } else {
-    console.log("validate phoneNumber successfully");
     phoneNumber.removeClass("is-invalid");
   }
 
