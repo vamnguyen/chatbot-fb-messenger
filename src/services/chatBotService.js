@@ -659,4 +659,5 @@ export default {
   sendMeatBacon,
   handleShowDetailRoom,
   callSendAPI,
+  getUserName,
 };
