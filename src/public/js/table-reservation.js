@@ -59,10 +59,7 @@ function validateInputFields() {
 
 function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
-    console.log("check before validate");
     let check = validateInputFields(); //return true or false
-    console.log("check after validate");
-    console.log("🚀 ~ file: table-reservation.js:66 ~ check:", check);
 
     let data = {
       psid: $("#psid").val(),
