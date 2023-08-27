@@ -6,7 +6,7 @@
   }
   js = d.createElement(s);
   js.id = id;
-  js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
+  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
   fjs.parentNode.insertBefore(js, fjs);
 })(document, "script", "Messenger");
 
@@ -27,6 +27,10 @@ window.extAsyncInit = function () {
 
       // run fallback, get userID from URL
       $("#psid").val(senderId);
+      console.log(
+        "🚀 ~ file: table-reservation.js:30 ~ error ~ senderId:",
+        senderId
+      );
       handleClickButtonTableReservation();
     }
   );
@@ -59,6 +63,7 @@ function validateInputFields() {
 
 function handleClickButtonTableReservation() {
   $("#btnReserveTable").on("click", function (e) {
+    console.log("click button DAT BAN is running...");
     let check = validateInputFields(); //return true or false
 
     let data = {
