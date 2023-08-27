@@ -113,7 +113,7 @@ let getUserName = async (sender_psid) => {
   });
 };
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -132,7 +132,7 @@ let getStartedTemplate = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -160,7 +160,7 @@ let handleGetStarted = (sender_psid) => {
       await callSendAPI(sender_psid, response1);
 
       // send generic template message
-      let response2 = getStartedTemplate();
+      let response2 = getStartedTemplate(sender_psid);
       await callSendAPI(sender_psid, response2);
 
       resolve("done");
@@ -170,7 +170,7 @@ let handleGetStarted = (sender_psid) => {
   });
 };
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -202,7 +202,7 @@ let getMainMenuTemplate = () => {
             buttons: [
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -233,7 +233,7 @@ let sendMainMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getMainMenuTemplate();
+      let response = getMainMenuTemplate(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -244,7 +244,7 @@ let sendMainMenu = (sender_psid) => {
 };
 
 // Lunch and Dinner
-let getLunchMenuTemplate = () => {
+let getLunchMenuTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -296,7 +296,7 @@ let getLunchMenuTemplate = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -314,7 +314,7 @@ let sendLunchMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getLunchMenuTemplate();
+      let response = getLunchMenuTemplate(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -324,7 +324,7 @@ let sendLunchMenu = (sender_psid) => {
   });
 };
 
-let getDinnerMenuTemplate = () => {
+let getDinnerMenuTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -376,7 +376,7 @@ let getDinnerMenuTemplate = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -394,7 +394,7 @@ let sendDinnerMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getDinnerMenuTemplate();
+      let response = getDinnerMenuTemplate(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -405,7 +405,7 @@ let sendDinnerMenu = (sender_psid) => {
 };
 
 // Lunch, Dinner Detail
-let getAppetizerDetail = () => {
+let getAppetizerDetail = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -439,7 +439,7 @@ let getAppetizerDetail = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -456,7 +456,7 @@ let sendAppetizer = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getAppetizerDetail();
+      let response = getAppetizerDetail(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -466,7 +466,7 @@ let sendAppetizer = (sender_psid) => {
   });
 };
 
-let getFishDetail = () => {
+let getFishDetail = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -500,7 +500,7 @@ let getFishDetail = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -517,7 +517,7 @@ let sendFish = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getFishDetail();
+      let response = getFishDetail(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -527,7 +527,7 @@ let sendFish = (sender_psid) => {
   });
 };
 
-let getMeatDetail = () => {
+let getMeatDetail = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -561,7 +561,7 @@ let getMeatDetail = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "TABLE RESERVATION",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, // false: open the webview in new tab
@@ -578,7 +578,7 @@ let sendMeatBacon = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send generic template message
-      let response = getMeatDetail();
+      let response = getMeatDetail(sender_psid);
       await callSendAPI(sender_psid, response);
 
       resolve("done");
@@ -605,7 +605,7 @@ let getImageRoomTemplate = () => {
   return response;
 };
 
-let getButtonRoomTemplate = () => {
+let getButtonRoomTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -619,9 +619,11 @@ let getButtonRoomTemplate = () => {
             payload: "BACK_TO_MAIN_MENU",
           },
           {
-            type: "postback",
-            title: "RESERVE A TABLE",
-            payload: "RESERVE_TABLE",
+            type: "web_url",
+            url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+            title: "TABLE RESERVATION",
+            webview_height_ratio: "tall",
+            messenger_extensions: true, // false: open the webview in new tab
           },
         ],
       },
@@ -636,7 +638,7 @@ let handleShowDetailRoom = (sender_psid) => {
       // send an image
       let response1 = getImageRoomTemplate();
       // send a button template: text, buttons
-      let response2 = getButtonRoomTemplate();
+      let response2 = getButtonRoomTemplate(sender_psid);
 
       await callSendAPI(sender_psid, response1);
       await callSendAPI(sender_psid, response2);

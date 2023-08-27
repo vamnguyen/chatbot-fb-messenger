@@ -16,7 +16,10 @@ let initWebRoutes = (app) => {
   router.get("/webhook", chatBotController.getWebhook);
   router.post("/webhook", chatBotController.postWebhook);
 
-  router.get("/table-reservation", chatBotController.handleTableReservation);
+  router.get(
+    "/table-reservation/:senderId",
+    chatBotController.handleTableReservation
+  );
   router.post("/reserve-table-ajax", chatBotController.handlePostReserveTable);
 
   return app.use("/", router);
