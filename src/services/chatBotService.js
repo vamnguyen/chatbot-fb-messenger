@@ -731,7 +731,8 @@ let getBotMediaTemplate = (sender_psid) => {
         elements: [
           {
             media_type: "video",
-            attachment_id: "122119778780007026",
+            // attachment_id: "122119778780007026",
+            url: "https://fb.watch/mIk1jjgPdL/",
             buttons: [
               {
                 type: "postback",
