@@ -10,33 +10,39 @@ const IMAGE_GIF_WELCOME =
 
 // Sends response messages via the Send API
 async function callSendAPI(sender_psid, response) {
-  // Construct the message body
-  let request_body = {
-    recipient: {
-      id: sender_psid,
-    },
-    message: response,
-  };
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Construct the message body
+      let request_body = {
+        recipient: {
+          id: sender_psid,
+        },
+        message: response,
+      };
 
-  await sendMarkSeenMessage(sender_psid);
-  await sendTypingOn(sender_psid);
+      await sendMarkSeenMessage(sender_psid);
+      await sendTypingOn(sender_psid);
 
-  // Send the HTTP request to the Messenger Platform
-  request(
-    {
-      uri: "https://graph.facebook.com/v2.6/me/messages",
-      qs: { access_token: PAGE_ACCESS_TOKEN },
-      method: "POST",
-      json: request_body,
-    },
-    (err, res, body) => {
-      if (!err) {
-        console.log("message sent!");
-      } else {
-        console.error("Unable to send message:" + err);
-      }
+      // Send the HTTP request to the Messenger Platform
+      request(
+        {
+          uri: "https://graph.facebook.com/v9.0/me/messages",
+          qs: { access_token: PAGE_ACCESS_TOKEN },
+          method: "POST",
+          json: request_body,
+        },
+        (err, res, body) => {
+          if (!err) {
+            resolve("message sent!");
+          } else {
+            console.error("Unable to send message:" + err);
+          }
+        }
+      );
+    } catch (error) {
+      reject(error);
     }
-  );
+  });
 }
 
 let sendTypingOn = (sender_psid) => {
@@ -125,7 +131,7 @@ let getStartedTemplate = (senderID) => {
           {
             title: "The VAM restaurant warmly welcomes our valued guests!",
             image_url: IMAGE_GET_STARTED,
-            subtitle: "We have the right hat for everyone.",
+            subtitle: "Below are the restaurant options!",
             buttons: [
               {
                 type: "postback",
@@ -163,6 +169,7 @@ let handleGetStarted = (sender_psid) => {
 
       // send generic template message
       // let response2 = getStartedTemplate(sender_psid);
+
       let response2 = getImageGetStartedTemplate();
       let response3 = getStartedQuickReplyTemplate();
 
@@ -193,7 +200,7 @@ let getImageGetStartedTemplate = () => {
 
 let getStartedQuickReplyTemplate = () => {
   let response = {
-    text: "The VAM restaurant warmly welcomes our valued guests!",
+    text: "Below are the restaurant options!",
     quick_replies: [
       {
         content_type: "text",
