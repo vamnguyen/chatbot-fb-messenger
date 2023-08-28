@@ -5,6 +5,8 @@ dotenv.config();
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const IMAGE_GET_STARTED = "https://bit.ly/vam-bot1";
 const IMAGE_DETAIL_ROOM = "https://bit.ly/eric-bot-18";
+const IMAGE_GIF_WELCOME =
+  "https://media.giphy.com/media/l41lTR6jmXXxHDgxG/giphy.gif";
 
 // Sends response messages via the Send API
 async function callSendAPI(sender_psid, response) {
@@ -139,7 +141,7 @@ let getStartedTemplate = (senderID) => {
               },
               {
                 type: "postback",
-                title: "GUIDE TO USE THIS BOT",
+                title: "GUIDE TO USE BOT",
                 payload: "GUIDE_TO_USE",
               },
             ],
@@ -160,14 +162,57 @@ let handleGetStarted = (sender_psid) => {
       await callSendAPI(sender_psid, response1);
 
       // send generic template message
-      let response2 = getStartedTemplate(sender_psid);
+      // let response2 = getStartedTemplate(sender_psid);
+      let response2 = getImageGetStartedTemplate();
+      let response3 = getStartedQuickReplyTemplate();
+
+      // send an image
       await callSendAPI(sender_psid, response2);
+      // send a quick replies
+      await callSendAPI(sender_psid, response3);
 
       resolve("done");
     } catch (error) {
       reject(error);
     }
   });
+};
+
+let getImageGetStartedTemplate = () => {
+  let response = {
+    attachment: {
+      type: "image",
+      payload: {
+        url: IMAGE_GET_STARTED,
+        is_reusable: true,
+      },
+    },
+  };
+  return response;
+};
+
+let getStartedQuickReplyTemplate = () => {
+  let response = {
+    text: "The VAM restaurant warmly welcomes our valued guests!",
+    quick_replies: [
+      {
+        content_type: "text",
+        title: "MAIN MENU",
+        payload: "MAIN_MENU",
+      },
+      {
+        content_type: "text",
+        title: "TABLE RESERVATION",
+        payload: "<POSTBACK_PAYLOAD>",
+      },
+      {
+        content_type: "text",
+        title: "GUIDE TO USE BOT",
+        payload: "<GUIDE_TO_USE>",
+      },
+    ],
+  };
+  return response;
 };
 
 let getMainMenuTemplate = (senderID) => {
