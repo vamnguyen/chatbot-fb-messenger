@@ -731,8 +731,8 @@ let getBotMediaTemplate = (sender_psid) => {
         elements: [
           {
             media_type: "video",
-            // attachment_id: "122119778780007026",
-            url: "https://fb.watch/mIk1jjgPdL/",
+            // attachment_id: "625367116397861",
+            url: "https://business.facebook.com/vamnguyenpage/videos/625367116397861/",
             buttons: [
               {
                 type: "postback",
