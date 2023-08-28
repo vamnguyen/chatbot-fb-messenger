@@ -110,6 +110,7 @@ async function handleMessage(sender_psid, received_message) {
       await chatBotService.sendMainMenu(sender_psid);
     }
     if (received_message.quick_reply.payload === "GUIDE_TO_USE") {
+      await chatBotService.guideToUseBot(sender_psid);
     }
     return;
   }
@@ -182,6 +183,10 @@ let handlePostback = async (sender_psid, received_postback) => {
     case "MAIN_MENU":
       await chatBotService.sendMainMenu(sender_psid);
       break;
+    case "GUIDE_TO_USE":
+      await chatBotService.guideToUseBot(sender_psid);
+      break;
+
     case "LUNCH_MENU":
       await chatBotService.sendLunchMenu(sender_psid);
       break;
@@ -239,6 +244,7 @@ async function callSendAPI(sender_psid, response) {
           json: request_body,
         },
         (err, res, body) => {
+          console.log("🚀 ~ file: chatBotController.js:247 ~ body:", body);
           if (!err) {
             resolve("message sent!");
           } else {
