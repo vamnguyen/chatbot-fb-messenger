@@ -200,7 +200,7 @@ let getImageGetStartedTemplate = () => {
 
 let getStartedQuickReplyTemplate = () => {
   let response = {
-    text: "Below are the restaurant options!",
+    text: "Below are the restaurant options! If you can't book a table on Laptop or PC (due to an error from Facebook) Please reserve a table on Mobile instead. Thanks!",
     quick_replies: [
       {
         content_type: "text",
