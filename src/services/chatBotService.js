@@ -209,13 +209,8 @@ let getStartedQuickReplyTemplate = () => {
       },
       {
         content_type: "text",
-        title: "TABLE RESERVATION",
-        payload: "<POSTBACK_PAYLOAD>",
-      },
-      {
-        content_type: "text",
         title: "GUIDE TO USE BOT",
-        payload: "<GUIDE_TO_USE>",
+        payload: "GUIDE_TO_USE",
       },
     ],
   };
