@@ -190,7 +190,7 @@ let getImageGetStartedTemplate = () => {
     attachment: {
       type: "image",
       payload: {
-        url: IMAGE_GET_STARTED,
+        url: IMAGE_GIF_WELCOME,
         is_reusable: true,
       },
     },
