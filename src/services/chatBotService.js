@@ -731,7 +731,7 @@ let getBotMediaTemplate = (sender_psid) => {
         elements: [
           {
             media_type: "video",
-            attachment_id: "625367116397861",
+            attachment_id: "122119778780007026",
             buttons: [
               {
                 type: "postback",
