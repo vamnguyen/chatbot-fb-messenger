@@ -250,7 +250,7 @@ let getMainMenuTemplate = (senderID) => {
           {
             title: "Business Hours",
             subtitle: "MON-FRI 10AM - 11PM  | SAT 5PM - 10PM | SUN 5PM - 9PM",
-            image_url: IMAGE_GET_STARTED,
+            image_url: IMAGE_DETAIL_ROOM,
             buttons: [
               {
                 type: "web_url",
